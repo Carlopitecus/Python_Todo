@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}ToDo-Editar{% endblock title %} 
+
+{%block main %}
+
+<div class="container">
+
+    <h2>Edita tus Tareas</h2>
+    
+    <div class="card">
+      <div class="card-header"></div>
+      <div class="card-body">
+        <h4 class="card-title">Datos de la tarea</h4>
+<form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+
+
+    <div class="mb-3">
+      <label for="titulo" class="form-label">Titulo</label>
+      <input type="text" name="titulo" class="form-control" id="titulo" aria-describedby="emailHelp"  value = "{{tareas.titulo}}"/>
+      <div id="tituloHelp" class="form-text">Comprar papas</div>
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-text">Descripción</span>
+      <textarea class="form-control" name="descripcion" aria-label="Papas chicas para sopa" value = "{{tareas.descripcion}}"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="fecha" class="form-label" >Fecha</label>
+      <input type="date" name="fechaTermino" class="form-control" id="fecha" aria-describedby="emailHelp" pattern="\d{4}-\d{2}-\d{2}" placeholder="yyyy-mm-dd" required value = "{{tareas.fechaTermino}}" />
+    </div>
+
+   
+    <div class="form-group">
+      <label for="">Categoria</label>
+      <select name="categoria" class="form-select">
+          <option value = "{{tareas.categoria}}">{{tareas.categoria}}</option>
+          <option value="Trabajo">Trabajo</option>
+          <option value="Hogar">Hogar</option>
+          <option value="Estudio">Estudio</option>
+      </select>
+  </div>
+
+    <div class="form-group">
+      <label for="">Estado</label>
+      <select name="estado" class="form-select">
+          <option value = "{{tareas.estado}}">{{tareas.estado}}</option>
+          <option value="Pendiente">Pendiente</option>
+          <option value="En Progreso">En Progresogar</option>
+          <option value="Completada">Completada</option>
+      </select>
+  </div>
+
+    <input name="" id="" class="btn btn-success" type="submit" value="Enviar Información" />
+    <a name="" id="" class="btn btn-primary" href="{% url 'app:tareas' %}" role="button" >Cancelar</a>
+
+
+    
+
+  </form>
+
+
+</div>
+<div class="card-footer text-muted">Footer</div>
+</div>
+</div>
+
+
+
+
+
+{%  endblock main %}

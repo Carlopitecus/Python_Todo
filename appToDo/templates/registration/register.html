@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}ToDo {% endblock title %}
+
+{% block main %}
+
+{% load crispy_forms_tags %}
+
+<h3>Login</h3>
+
+<br />
+
+<form action="" method="POST">
+  {% csrf_token %}
+
+  <div class="card mx-auto" style="width: 20rem">
+    <div class="card-body">
+      <h5 class="card-title">Complete todos los Campos</h5>
+
+      {{ form | crispy }}
+     
+      <a href="{% url 'app:home' %}" class="card-link btn btn-sm btn-dark">Inicio</a>
+      <a href="{% url 'login' %}" class="card-link btn btn-sm btn-dark">Iniciar Sesion</a>
+      <button class="btn btn-sm btn-dark float-end" type="submit">Registrarse</button>
+    </div>
+  </div>
+</form>
+
+
+
+{% endblock main %}    

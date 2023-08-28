@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}ToDo {% endblock title %}
+
+{% block main %}
+
+<h3> Para que nada se te pase , To Do List</h3>
+
+{%if request.user.is_authenticated %}
+
+<hr>
+
+<h2>{{ user.username | upper}} , bienvenido </h2>
+<h3>su id es: {{ user.id }} </h3>
+
+{% endif %}
+
+{% endblock main %}    

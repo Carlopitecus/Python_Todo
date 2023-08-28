@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+
+{% block title %}ToDo-Tareas{% endblock title %}
+
+{% block main %}
+
+<br>
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href="{% url 'app:ingresarTarea' %}" role="button">Agrega una nueva tarea</a>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Tareas</h3>
+
+        <h4>{{ user.username}}, estas son tus Tareas!!</h4>
+        <div>
+            <a name="" id="" class="btn btn-primary" href="{% url 'app:tareas' %}" role="button">Pendientes</a>
+            <a name="" id="" class="btn btn-primary" href="{% url 'app:tareasProgreso' %}" role="button">En Progreso</a>
+            <a name="" id="" class="btn btn-primary" href="{% url 'app:tareasCompleta' %}" role="button">Completadas</a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-light">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Título</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Fecha de termino</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for tarea  in tareas %}
+                    <tr class="">
+                        <td scope="row">{{ tarea.id }}</td>
+                        <td>{{ tarea.titulo }}</td>
+                        <td>{{ tarea.descripcion }}</td>
+                        <td>{{ tarea.fechaTermino }}</td>
+                        <td>{{ tarea.estado }}</td>
+                        <td>{{ tarea.categoria }}</td>                      
+                       
+                        <td><a name="" id="" class="btn btn-info" href="{% url 'app:editar' tarea.id %}" role="button">Editar</a> |  <a name="" id="" class="btn btn-danger" href="{% url 'app:eliminar' tarea.id %}"" role="button">Eliminar</a></td>
+                    </tr>
+
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    <div class="card-footer text-muted">
+        Footer
+    </div>
+</div>
+
+
+
+{% endblock main %}   
