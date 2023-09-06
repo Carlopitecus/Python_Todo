@@ -14,4 +14,14 @@ class Tarea(models.Model):
     categoria = models.CharField(max_length=150, verbose_name= 'Categoría')
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     def __str__(self):
-        return self.id
+        return self.titulo
+    
+class Tareacompletada(models.Model):
+    titulo = models.CharField(max_length=200)
+    descripcion = models.TextField()
+    fechaCompletada = models.DateField()
+    estado = models.CharField(max_length=150)
+    categoria = models.CharField(max_length=150)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.titulo

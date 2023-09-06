@@ -4,21 +4,39 @@
 {% block title %}ToDo-Tareas{% endblock title %}
 
 {% block main %}
+{% load static %}
 
 <br>
-
-<div class="card">
+<div class="container">
+<div class="card card__tareas">
     <div class="card-header">
         <a name="" id="" class="btn btn-success" href="{% url 'app:ingresarTarea' %}" role="button">Agrega una nueva tarea</a>
     </div>
     <div class="card-body">
-        <h3 class="card-title">Tareas</h3>
+        <h3 class="card-title">Tareas  {{estado}} </h3>
 
-        <h4>{{ user.username}}, estas son tus Tareas!!</h4>
+        
+
+        <div class="row">
+            <div class="col">
+                <h4>Hola {{ user.username}}, estas son tus Tareas!!</h4>            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-white bg-primary "> Tareas pendientes: {{count_pendientes}}</li>
+                    <li class="list-group-item text-dark bg-warning">Tareas en progreso: {{count_penprogreso}}</li>
+                    <li class="list-group-item text-white bg-success">Tareas terminadas:  {{count_completadas}}</li>
+                    <li class="list-group-item text-white bg-danger">Tareas vencidas:  {{count_pendientesVencidas}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <div>
             <a name="" id="" class="btn btn-primary" href="{% url 'app:tareas' %}" role="button">Pendientes</a>
             <a name="" id="" class="btn btn-primary" href="{% url 'app:tareasProgreso' %}" role="button">En Progreso</a>
             <a name="" id="" class="btn btn-primary" href="{% url 'app:tareasCompleta' %}" role="button">Completadas</a>
+            <a name="" id="" class="btn btn-primary" href="{% url 'app:tareasVencidas' %}" role="button">Vencidas</a>
         </div>
 
         <div class="table-responsive">
@@ -45,8 +63,10 @@
                         <td>{{ tarea.estado }}</td>
                         <td>{{ tarea.categoria }}</td>                      
                        
-                        <td><a name="" id="" class="btn btn-info" href="{% url 'app:editar' tarea.id %}" role="button">Editar</a> |  <a name="" id="" class="btn btn-danger" href="{% url 'app:eliminar' tarea.id %}"" role="button">Eliminar</a></td>
+                        <td><a name="" id="" class="btn btn-info" href="{% url 'app:editar' tarea.id %}" role="button">Editar</a> |  <a name="" id="" class="btn btn-danger" href="{% url 'app:eliminar' tarea.id %}" role="button">Eliminar</a></td>
                     </tr>
+
+                    
 
                     {% endfor %}
                     
@@ -58,6 +78,7 @@
     <div class="card-footer text-muted">
         Footer
     </div>
+</div>
 </div>
 
 

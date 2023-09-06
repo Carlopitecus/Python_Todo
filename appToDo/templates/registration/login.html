@@ -1,20 +1,29 @@
 {% extends 'base.html' %}
 
 {% block main%}  
+{% load static %}
 
-<h3>Login</h3>
+<div class="container">
 
+<h3> Para que nada se te pase, SAVE THE DATE</h3>
 <br>
 
-<form action="" method = 'POST'>
-    {% csrf_token %}
-
-    <input type="text" name = 'username' id="" placeholder='Nombre de usuario'>
-    <br>
-    <input type="password" name="password" id='' placeholder='Contraseña'>
-    <br>
-
-    <button type="submit">Iniciar Sesion</button>
-</form>
-
+<div class="card card__login">
+    <div class="card-header">
+        LOGIN
+    </div>
+    <div class="card-body">
+        <form action="" method = 'POST'>
+            {% csrf_token %}
+        
+            <input type="text" name = 'username' id="" placeholder='Nombre de usuario'>
+            <br>
+            <input type="password" name="password" id='' placeholder='Contraseña'>
+            <br>
+        
+            <button type="submit">Iniciar Sesion</button>
+        </form>        
+    </div>    
+</div>
+</div>
 {% endblock main %}

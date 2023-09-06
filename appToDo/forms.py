@@ -15,6 +15,10 @@ class UsuarioForm(UserCreationForm):
         }
 
 class TareaForm(forms.ModelForm):
+    
     class Meta:
         model = Tarea
-        fields = '__all__'
+        fields = ['titulo', 'descripcion', 'fechaTermino','estado','categoria', ]
+    
+    def get_concrete_fields(self):
+        return [field for field in self.get_fields() if field.concrete]
